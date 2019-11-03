@@ -6,7 +6,7 @@ node {
   }
 
   stage('Build image') {
-    app = docker.build('tabbakh/example-app')
+    app = docker.build('atabbakh/example-app')
   }
 
   stage('Push image') {
