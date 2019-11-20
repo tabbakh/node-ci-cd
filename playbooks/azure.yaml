@@ -1,0 +1,14 @@
+- hosts: prod
+  tasks:
+    - name: Re-create example-app container
+      docker_container:
+        name: example-app
+        image: atabbakh/example-app
+        state: present
+        recreate: yes
+    - name: Restart a container
+      docker_container:
+        name: example-app
+        image: atabbakh/example-app
+        state: started
+        restart: yes

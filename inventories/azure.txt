@@ -1,0 +1,2 @@
+[prod]
+my-vm-for-test.westeurope.cloudapp.azure.com

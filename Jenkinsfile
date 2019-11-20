@@ -23,7 +23,8 @@ node {
 
     stage('Deploiement Ansible') {
         ansiblePlaybook(
-            playbook: 'ansible-playbooks.yaml',
+            playbook: 'playbooks/azure.yaml',
+            inventory: 'inventories/azure.txt',
             credentialsId: 'azure-credentials'
         )
     }
