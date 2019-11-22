@@ -1,6 +1,5 @@
 node {
     def app
-    def shortCommitHash = getShortCommitHash()
 
     stage('Clone repository') {
         checkout scm
