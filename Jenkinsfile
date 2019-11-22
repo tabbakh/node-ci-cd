@@ -31,7 +31,8 @@ node {
         ansiblePlaybook(
             playbook: 'playbooks/azure.yaml',
             inventory: 'inventories/azure.txt',
-            credentialsId: 'azure-credentials'
+            credentialsId: 'azure-credentials',
+            extras: '--extra-vars "short_commit_hash=${shortCommitHash}"'
         )
     }
 }

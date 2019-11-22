@@ -3,7 +3,7 @@
     - name: Re-create example-app container
       docker_container:
         name: example-app
-        image: atabbakh/example-app
+        image: 'atabbakh/example-app:{{short_commit_hash}}'
         state: present
         ports:
           - "80:8000"
@@ -13,6 +13,6 @@
     - name: Restart a container
       docker_container:
         name: example-app
-        image: atabbakh/example-app
+        image: 'atabbakh/example-app:{{short_commit_hash}}'
         state: started
         restart: yes
