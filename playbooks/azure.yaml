@@ -7,6 +7,8 @@
         state: present
         ports:
           - "80:8000"
+        networks:
+          - name: example_app
         recreate: yes
     - name: Restart a container
       docker_container:
