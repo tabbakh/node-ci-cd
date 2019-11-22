@@ -18,7 +18,7 @@ node {
 
     stage('Push image') {
         docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-          app.push(shortCommitHash)
+          app.push("${env.GIT_COMMIT}")
         }
     }
 
