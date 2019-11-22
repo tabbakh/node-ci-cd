@@ -1,9 +1,9 @@
+def getShortCommitHash() {
+    return sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
+}
+
 node {
     def app
-
-    def getShortCommitHash() {
-        return sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
-    }
 
     def shortCommitHash = getShortCommitHash()
 
