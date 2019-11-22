@@ -1,6 +1,12 @@
 node {
     def app
 
+    def getShortCommitHash() {
+        return sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
+    }
+
+    def shortCommitHash = getShortCommitHash()
+
     stage('Clone repository') {
         checkout scm
     }
@@ -17,7 +23,7 @@ node {
 
     stage('Push image') {
         docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-          app.push("${GIT_COMMIT}")
+          app.push(shortCommitHash)
         }
     }
 
