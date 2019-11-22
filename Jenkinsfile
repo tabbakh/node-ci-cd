@@ -4,6 +4,7 @@ def getShortCommitHash() {
 
 node {
     def app
+
     def shortCommitHash = getShortCommitHash()
 
     stage('Clone repository') {
