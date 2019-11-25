@@ -1,5 +1,5 @@
 {
-  "name": "getintodevops-example-app",
+  "name": "example-app",
   "version": "1.0.0",
   "description": "A Hello World HTTP server",
   "main": "main.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/getintodevops/bestpractices-docker-jenkins/"
+    "url": "https://github.com/tabbakh/example-app.git"
   },
   "keywords": [
     "node",
@@ -17,7 +17,7 @@
     "dockerfile",
     "jenkinsfile"
   ],
-  "author": "miiro@getintodevops.com",
+  "author": "tabbakh.abderrahmen@gmail.com",
   "license": "ISC",
   "devDependencies": { "test": ">=0.6.0" }
 }
