@@ -1,5 +1,8 @@
 - hosts: prod
   tasks:
+    - name: Create a network
+      docker_network:
+        name: example_app
     - name: Re-create example-app container
       docker_container:
         name: example-app
