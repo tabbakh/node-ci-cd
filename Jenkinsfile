@@ -22,12 +22,20 @@ node {
     }
 
     stage('Push image') {
+        when{
+            branch 'master'
+        }
+
         docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
           app.push(shortCommitHash)
         }
     }
 
     stage('Deploiement Ansible') {
+        when{
+            branch 'master'
+        }
+
         ansiblePlaybook(
             playbook: 'playbooks/azure.yaml',
             inventory: 'inventories/azure.txt',
