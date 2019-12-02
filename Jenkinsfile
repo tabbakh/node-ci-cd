@@ -4,7 +4,7 @@ def getShortCommitHash() {
 
 node {
     def app
-    def shortCommitHash = getShortCommitHash()
+    def shortCommitHash
 
     stage('Clone repository') {
         checkout scm
@@ -22,6 +22,7 @@ node {
 
     if ("${env.BRANCH_NAME}" == "master") {
         stage('Push image') {
+            shortCommitHash = getShortCommitHash()
             docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
               app.push(shortCommitHash)
             }
