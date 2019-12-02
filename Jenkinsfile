@@ -2,13 +2,8 @@ def getShortCommitHash() {
     return sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
 }
 
-def getCurrentBranch() {
-    return sh (returnStdout: true, script: 'git branch').trim()
-}
-
 node {
     def app
-    def branch
     def shortCommitHash = getShortCommitHash()
 
     stage('Clone repository') {
@@ -25,11 +20,7 @@ node {
         }
     }
 
-    stage('Init BRANCH') {
-        branch = getCurrentBranch()
-    }
-
-    if (branch == 'master') {
+    if ("${env.BRANCH_NAME}" == "master") {
         stage('Push image') {
             docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
               app.push(shortCommitHash)
@@ -41,7 +32,7 @@ node {
                 playbook: 'playbooks/azure.yaml',
                 inventory: 'inventories/azure.txt',
                 credentialsId: 'azure-credentials',
-                extras: '--extra-vars "short_commit_hash=' + shortCommitHash + '"'
+                extras: '--extra-vars "short_commit_hash=' + shortCommitHash +'"'
             )
         }
     }
