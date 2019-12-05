@@ -1,2 +1,2 @@
 [prod]
-my-vm-for-test.westeurope.cloudapp.azure.com
+first-vm.westeurope.cloudapp.azure.com
