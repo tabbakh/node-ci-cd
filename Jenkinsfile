@@ -29,18 +29,18 @@ node {
         }
 
         if ("${env.BRANCH_NAME}" == "develop") {
-            stage('Deploiement Ansible') {
+            stage('Deploiement Ansible staging') {
                 ansiblePlaybook(
                     playbook: 'playbooks/azure.yaml',
                     inventory: 'inventories/azure.txt',
-                    credentialsId: 'azure-credentials',
+                    credentialsId: 'azure-vm2',
                     extras: '--extra-vars "short_commit_hash=' + shortCommitHash +' host=staging"'
                 )
             }
         }
 
         if ("${env.BRANCH_NAME}" == "master") {
-            stage('Deploiement Ansible') {
+            stage('Deploiement Ansible prod') {
                 ansiblePlaybook(
                     playbook: 'playbooks/azure.yaml',
                     inventory: 'inventories/azure.txt',
