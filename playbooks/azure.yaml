@@ -1,4 +1,4 @@
-- hosts: '{{host}}
+- hosts: '{{host}}'
   tasks:
     - name: Create a network
       docker_network:
