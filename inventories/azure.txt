@@ -1,2 +1,5 @@
 [prod]
 first-vm.westeurope.cloudapp.azure.com
+
+[staging]
+second-vm.westeurope.cloudapp.azure.com
