@@ -20,7 +20,7 @@ node {
         }
     }
 
-    if ("${env.BRANCH_NAME}" == "master" || "${env.BRANCH_NAME}" == "develop") {
+    if ("${env.BRANCH_NAME}" == "master" ) {
         stage('Push image') {
             shortCommitHash = getShortCommitHash()
             docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
@@ -28,26 +28,13 @@ node {
             }
         }
 
-        if ("${env.BRANCH_NAME}" == "develop") {
-            stage('Deploiement Ansible') {
-                ansiblePlaybook(
-                    playbook: 'playbooks/azure.yaml',
-                    inventory: 'inventories/azure.txt',
-                    credentialsId: 'azure-credentials',
-                    extras: '--extra-vars "short_commit_hash=' + shortCommitHash +' host=staging"'
-                )
-            }
-        }
-
-        if ("${env.BRANCH_NAME}" == "master") {
-            stage('Deploiement Ansible') {
-                ansiblePlaybook(
-                    playbook: 'playbooks/azure.yaml',
-                    inventory: 'inventories/azure.txt',
-                    credentialsId: 'azure-credentials',
-                    extras: '--extra-vars "short_commit_hash=' + shortCommitHash +' host=prod"'
-                )
-            }
+        stage('Deploiement Ansible') {
+            ansiblePlaybook(
+                playbook: 'playbooks/azure.yaml',
+                inventory: 'inventories/azure.txt',
+                credentialsId: 'azure-credentials',
+                extras: '--extra-vars "short_commit_hash=' + shortCommitHash +' host=prod"'
+            )
         }
     }
 }
