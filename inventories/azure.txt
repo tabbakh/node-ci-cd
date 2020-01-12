@@ -1,5 +1,2 @@
 [prod]
-first-vm.westeurope.cloudapp.azure.com
-
-[staging]
-second-vm.westeurope.cloudapp.azure.com
+ec2-3-14-126-148.us-east-2.compute.amazonaws.com
