@@ -32,7 +32,7 @@ node {
             ansiblePlaybook(
                 playbook: 'playbooks/azure.yaml',
                 inventory: 'inventories/azure.txt',
-                credentialsId: 'aws-2-instance',
+                credentialsId: 'aws-2-instance-myriam',
                 extras: '--extra-vars "short_commit_hash=' + shortCommitHash +' host=prod"'
             )
         }
