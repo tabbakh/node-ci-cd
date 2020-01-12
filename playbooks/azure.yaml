@@ -1,4 +1,4 @@
-- hosts: prod
+- hosts: '{{host}'
   tasks:
     - name: Create a network
       docker_network:
@@ -9,7 +9,7 @@
         image: 'atabbakh/example-app:{{short_commit_hash}}'
         state: present
         ports:
-          - "80:8000"
+          - "8000:8000"
         networks:
           - name: example_app
         recreate: yes
